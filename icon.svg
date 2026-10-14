@@ -1,17 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#070714"/>
-      <stop offset="100%" stop-color="#14082e"/>
-    </linearGradient>
-    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00f0ff"/>
-      <stop offset="100%" stop-color="#ff007f"/>
-    </linearGradient>
-  </defs>
-  <rect width="512" height="512" rx="110" fill="url(#bg)"/>
-  <rect x="24" y="24" width="464" height="464" rx="92" fill="none" stroke="url(#neon)" stroke-width="10" opacity="0.8"/>
-  <path d="M150 330 L256 130 L362 330 Z" fill="none" stroke="#00f0ff" stroke-width="22" stroke-linejoin="round"/>
-  <circle cx="256" cy="275" r="34" fill="#ff007f"/>
-  <text x="256" y="425" font-family="monospace, sans-serif" font-weight="900" font-size="56" fill="#ffffff" text-anchor="middle" letter-spacing="6">ARCADE</text>
+  <rect width="512" height="512" rx="112" fill="#101014"/>
+  <rect x="24" y="24" width="464" height="464" rx="92" fill="none" stroke="#f4f2ec" stroke-opacity="0.14" stroke-width="4"/>
+  <!-- Racing stripes -->
+  <path d="M180 24 L230 24 L150 488 L100 488 Z" fill="#e12d39"/>
+  <path d="M246 24 L268 24 L188 488 L166 488 Z" fill="#5067f4"/>
+  <!-- Stylized Sports Car Silhouette / Tachometer Crest -->
+  <circle cx="256" cy="256" r="144" fill="#18191f" stroke="#f4f2ec" stroke-width="8"/>
+  <path d="M154 316 A120 120 0 1 1 358 316" fill="none" stroke="#e12d39" stroke-width="14" stroke-linecap="round"/>
+  <line x1="256" y1="256" x2="332" y2="192" stroke="#f4f2ec" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="20" fill="#e12d39"/>
+  <text x="256" y="356" text-anchor="middle" fill="#f4f2ec" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="44" letter-spacing="4">GT3</text>
 </svg>

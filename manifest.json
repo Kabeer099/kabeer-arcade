@@ -1,13 +1,13 @@
 {
-  "name": "Kabeer Arcade — 3-in-1 Offline Gaming Hub",
-  "short_name": "Kabeer Arcade",
-  "description": "Play 3D Neon Drift, Void Survivor & Cyber Stack 3D anytime — 100% Offline Ready!",
+  "name": "Asphalt Overdrive 3D — Kabeer Motorsport",
+  "short_name": "Asphalt 3D",
+  "description": "Realistic 3D Highway Traffic Racer by Kabeer Ahmed. Works 100% offline anytime without internet.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#06060e",
-  "theme_color": "#00f0ff",
+  "background_color": "#101014",
+  "theme_color": "#101014",
   "icons": [
     {
       "src": "./icon.svg",

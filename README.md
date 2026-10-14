@@ -1,42 +1,49 @@
-# 🎮 Kabeer Arcade — 3-in-1 Offline Cyber Gaming Hub (PWA)
+# 🏎️ Asphalt Overdrive 3D — Kabeer Motorsport Division
 
-[![Live Arcade on kabeer.site](https://img.shields.io/badge/🕹️_PLAY_LIVE-kabeer.site%2Farcade-00f0ff?style=for-the-badge)](https://kabeer.site/arcade/)
-[![GitHub Pages](https://img.shields.io/badge/🌐_GITHUB_PAGES-kabeer099.github.io%2Fkabeer--arcade-ff007f?style=for-the-badge)](https://kabeer099.github.io/kabeer-arcade/)
-[![Offline Ready PWA](https://img.shields.io/badge/⚡_100%25_OFFLINE-Service_Worker_PWA-00ff88?style=for-the-badge)](https://kabeer.site/arcade/)
-
-An ultra-responsive **60 FPS 3-in-1 Offline Browser Gaming Hub** engineered by **[Kabeer Ahmed](https://kabeer.site/)**.  
-Load it once — even if your internet disconnects completely, you can reopen the page anytime and play all 3 games offline with full sound effects, synthwave music, and persistent high scores!
+> **Play Live**: [**https://kabeer.site/arcade/**](https://kabeer.site/arcade/) · [**GitHub Pages Mirror**](https://kabeer099.github.io/kabeer-arcade/)
+> **100% Offline-First PWA** — Visit once and play anytime, even when your internet connection is completely turned off!
 
 ---
 
-## 🕹️ The 3 Built-In Games
+## 🏁 Overview
 
-### 1. 🏎️ NEON DRIFT 3D *(3D Perspective Cyber Highway Racer)*
-- Speed across a 3D synthwave grid horizon with a retro neon sun.
-- Switch lanes (`A/D` or `←/→` or Swipe), **Jump** over red laser beams (`Space` / `↑`), collect energy coins, grab **Shields**, and trigger **Hyper-Nitro** (`Shift`) to smash right through neon monoliths!
+**Asphalt Overdrive 3D** is a clean, realistic 3D highway traffic racing game engineered with pure **HTML5 Canvas**, **60FPS 3D perspective road projection**, **Web Audio API procedural engine synthesis**, and a **Service Worker offline cache**.
 
-### 2. 🚀 VOID SURVIVOR *(2D Action Roguelite & Bullet-Heaven Space Arena)*
-- Pilot a plasma starfighter (`WASD` / Arrows / Touch Drag) against waves of geometric alien drones and tank cruisers.
-- Collect magnetized XP crystals to **Level Up** mid-run and choose weapon upgrades (*Twin-Linked Plasma Barrels, Overclocked Blaster, Orbital Plasma Satellites, Ion Thrusters, EMP Nova Shockwaves*).
+Designed with an **Editorial Motorsport UI** that matches [kabeer.site](https://kabeer.site/) — warm stone paper (`#f4f2ec`), matte carbon (`#0e0f12`), Porsche Guards Red (`#e12d39`), and Studio Blue (`#5067f4`).
 
-### 3. 🧱 CYBER STACK 3D *(3D Isometric Precision Tower Builder)*
-- Drop sliding 3D isometric neon slabs with millimeter precision (`Space` / Click / Tap).
-- Chain **4+ Perfect Combos** to play ascending synth chords and expand your slab size as you build into orbit!
+### ✨ Key Features
+
+- **3 Race Modes**:
+  1. **01 // Two-Way Highway**: 4-lane highway rush. Drive in the left oncoming lanes at `130+ KM/H` for **2x Velocity Score Multipliers** and thread between cars for **Near-Miss Slipstream Combos**.
+  2. **02 // Checkpoint Sprint (FIA Time Trial)**: Beat the countdown clock and blast through FIA checkpoints every `1.0 KM` (`+14.0s` & `+$75` bonus).
+  3. **03 // Interceptor Escape**: Outrun Highway Patrol pursuit cruisers in high-speed traffic.
+- **3 Dynamic Weather & Time-of-Day Conditions (`C` Key or Top Bar)**:
+  - ☀️ **Alpine Daylight**: Crisp blue skies, snow-capped peaks, green pine verges, and red/white FIA kerbs.
+  - 🌅 **Canyon Sunset**: Golden-hour horizon, desert mesas, and warm asphalt reflections.
+  - 🌧️ **Wet Monsoon**: Overcast storm skies, falling rain streaks, and wet dark tarmac.
+- **Paddock Garage & Drivetrain Workshop**:
+  - Unlock 4 Grand Tourers: **Apex GT-R**, **Weissach 911 RS**, **Cobalt F1-LM**, and **Blackwing V12**.
+  - Upgrade **ECU & Twin-Turbo**, **Carbon-Ceramic Brakes & Grip**, and **Slipstream KERS Hybrid**.
+- **⚡ 100% Offline Ready (`sw.js`)**:
+  - Automatically caches all game code and assets on your first visit (`OFFLINE READY ✓`). Disconnect Wi-Fi anytime and reload to keep racing!
 
 ---
 
-## ⚡ Key Engineering Highlights
+## 🕹️ Controls
 
-- **100% Offline-First PWA Architecture**: Powered by a custom `CacheStorage` Service Worker (`sw.js`) and Web App Manifest (`manifest.json`). Works with **zero internet connection** after the first visit.
-- **Procedural Web Audio API Synthesizer**: All laser blasts, explosions, coin chimes, combo notes, and the background synthwave bassline are synthesized in real time using the browser's native `AudioContext` — zero external MP3 dependencies!
-- **Cross-Device Controls**: Full keyboard/mouse support on desktop + swipe gestures and dedicated glassmorphic touch controls on mobile/tablet.
-- **Persistent Wallet & Neon Themes**: Earn Cyber Coins across all 3 games (`localStorage`) and switch between *Cyan*, *Rose*, *Matrix Emerald*, and *Solar Gold* themes.
+| Action | Desktop Keyboard | Mobile / Touch |
+| :--- | :--- | :--- |
+| **Steer Left / Right** | `A / D` or `← / →` | On-screen `◀` / `▶` |
+| **Throttle / Brake** | `W / ↑` & `S / ↓` | On-screen `BRAKE` |
+| **Slipstream Overdrive Boost** | `SPACE` or `SHIFT` | On-screen `BOOST` |
+| **Switch Weather** | `C` | Weather button in top bar |
+| **Pause Race** | `P` or `ESC` | Pause `II` button |
 
 ---
 
 ## 👨‍💻 Author
 
-**Kabeer Ahmed** — *Full-Stack Engineer & UI/UX Expert*
-- 🌐 **Official Portfolio:** [https://kabeer.site/](https://kabeer.site/)
-- 💼 **LinkedIn:** [linkedin.com/in/kabeerahmed-dev](https://www.linkedin.com/in/kabeerahmed-dev)
-- 💻 **GitHub:** [github.com/kabeer099](https://github.com/kabeer099)
+**Kabeer Ahmed** — Full-Stack Engineer & UI/UX Expert
+- 🌐 Portfolio: [https://kabeer.site/](https://kabeer.site/)
+- 💼 LinkedIn: [linkedin.com/in/kabeerahmed-dev](https://www.linkedin.com/in/kabeerahmed-dev)
+- 💻 GitHub: [@Kabeer099](https://github.com/Kabeer099)

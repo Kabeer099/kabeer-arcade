@@ -3,200 +3,296 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Kabeer Arcade — 3-in-1 Offline Cyber Gaming Hub | Kabeer Ahmed</title>
-  <meta name="description" content="Play 3D Neon Drift, Void Survivor & Cyber Stack 3D in your browser — 100% Offline Ready PWA built by Kabeer Ahmed." />
-  <meta name="theme-color" content="#06060e" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Asphalt Overdrive 3D — Kabeer Motorsport | Offline Highway Racer</title>
+  <meta name="description" content="Play Asphalt Overdrive 3D by Kabeer Ahmed — a realistic 3D highway traffic racing game with dynamic weather, garage tuning, and 100% offline PWA support." />
+  <meta name="theme-color" content="#101014" />
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./icon.svg" />
   <link rel="stylesheet" href="./style.css" />
 </head>
-<body data-theme="cyan">
-  <!-- Background Ambient Grid -->
-  <div class="bg-grid"></div>
-
-  <!-- Top Arcade Header -->
-  <header class="arcade-header">
-    <div class="brand-group">
-      <a href="https://kabeer.site/" class="brand-logo" title="Back to Kabeer Ahmed Portfolio">
-        <span class="logo-badge">K✦A</span>
-        <div class="brand-text">
-          <h1>KABEER ARCADE</h1>
-          <span class="brand-sub">3-IN-1 OFFLINE ENGINE</span>
+<body>
+  <div class="studio-shell">
+    <!-- Top Editorial Motorsport Bar -->
+    <header class="topbar">
+      <div class="brand-group">
+        <a href="https://kabeer.site/" class="brand-back" title="Back to Kabeer.site Portfolio">
+          <span class="brand-crest">GT3</span>
+          <div class="brand-titles">
+            <span class="brand-main">ASPHALT OVERDRIVE</span>
+            <span class="brand-sub">KABEER MOTORSPORT DIVISION</span>
+          </div>
+        </a>
+        <div id="netBadge" class="status-pill online" title="Works 100% without internet after first visit">
+          <span class="status-dot"></span>
+          <span id="netText">OFFLINE READY</span>
         </div>
-      </a>
-      <div class="status-pill" id="offlineStatusPill" title="Once loaded, this game works 100% without internet!">
-        <span class="status-dot" id="statusDot"></span>
-        <span id="statusText">OFFLINE READY</span>
-      </div>
-    </div>
-
-    <!-- Game Mode Switcher Tabs -->
-    <nav class="game-tabs" aria-label="Select Game">
-      <button class="game-tab active" data-game="drift" id="tab-drift">
-        <span class="tab-icon">🏎️</span>
-        <div class="tab-info">
-          <span class="tab-title">NEON DRIFT 3D</span>
-          <span class="tab-tag">3D Cyber Highway</span>
-        </div>
-      </button>
-      <button class="game-tab" data-game="survivor" id="tab-survivor">
-        <span class="tab-icon">🚀</span>
-        <div class="tab-info">
-          <span class="tab-title">VOID SURVIVOR</span>
-          <span class="tab-tag">2D Space Roguelite</span>
-        </div>
-      </button>
-      <button class="game-tab" data-game="stack" id="tab-stack">
-        <span class="tab-icon">🧱</span>
-        <div class="tab-info">
-          <span class="tab-title">CYBER STACK 3D</span>
-          <span class="tab-tag">3D Precision Tower</span>
-        </div>
-      </button>
-    </nav>
-
-    <!-- Right Controls: Coins, Themes, Audio, Install -->
-    <div class="header-actions">
-      <div class="coin-wallet" title="Cyber Coins (Earned across all 3 games & saved offline)">
-        <span class="coin-icon">⚡</span>
-        <span id="totalCoinsDisplay">0</span>
       </div>
 
-      <button class="icon-btn" id="themeBtn" title="Switch Neon Theme">
-        🎨 <span class="btn-label" id="themeLabel">Cyan</span>
-      </button>
+      <!-- Mode Switcher (Endless / Time Trial / Pursuit) -->
+      <nav class="mode-tabs" aria-label="Race Modes">
+        <button class="mode-tab active" data-mode="highway">
+          <span class="mode-index">01</span>
+          <div class="mode-copy">
+            <strong>TWO-WAY HIGHWAY</strong>
+            <small>Endless Near-Miss Rush</small>
+          </div>
+        </button>
+        <button class="mode-tab" data-mode="timetrial">
+          <span class="mode-index">02</span>
+          <div class="mode-copy">
+            <strong>CHECKPOINT SPRINT</strong>
+            <small>Beat the FIA Clock</small>
+          </div>
+        </button>
+        <button class="mode-tab" data-mode="pursuit">
+          <span class="mode-index">03</span>
+          <div class="mode-copy">
+            <strong>INTERCEPTOR ESCAPE</strong>
+            <small>Outrun Highway Patrol</small>
+          </div>
+        </button>
+      </nav>
 
-      <button class="icon-btn active" id="sfxBtn" title="Toggle Sound Effects">
-        🔊 <span class="btn-label">SFX</span>
-      </button>
-
-      <button class="icon-btn" id="musicBtn" title="Toggle Synthwave Beats">
-        🎵 <span class="btn-label">BEAT</span>
-      </button>
-
-      <button class="install-btn" id="installPwaBtn" hidden>
-        📲 Install Offline
-      </button>
-    </div>
-  </header>
-
-  <!-- Main Arcade Viewport -->
-  <main class="arcade-stage">
-    <div class="canvas-wrapper" id="canvasWrapper">
-      <canvas id="gameCanvas"></canvas>
-
-      <!-- Live In-Game HUD -->
-      <div class="hud-bar" id="hudBar">
-        <div class="hud-stat">
-          <span class="hud-label">SCORE</span>
-          <span class="hud-val" id="hudScore">0</span>
-        </div>
-        <div class="hud-stat">
-          <span class="hud-label">BEST</span>
-          <span class="hud-val highlight" id="hudBest">0</span>
-        </div>
-        <div class="hud-stat" id="hudExtraWrap">
-          <span class="hud-label" id="hudExtraLabel">SPEED</span>
-          <span class="hud-val" id="hudExtraVal">1.0x</span>
-        </div>
-        <button class="hud-pause-btn" id="pauseBtn" title="Pause Game (P / Esc)">⏸</button>
+      <!-- Right Controls: Weather, Garage, Audio, Install -->
+      <div class="toolbar">
+        <button id="weatherBtn" class="tool-btn" title="Switch Weather &amp; Time of Day">
+          <span id="weatherIcon">☀️</span>
+          <span id="weatherLabel">Alpine Day</span>
+        </button>
+        <button id="garageBtn" class="tool-btn credit-btn" title="Open Garage &amp; Car Tuning">
+          <span class="credit-tag">CR</span>
+          <span id="creditsVal">$1,250</span>
+        </button>
+        <button id="sfxBtn" class="tool-btn active" title="Toggle Engine &amp; Race Audio">
+          <span>Engine SFX</span>
+        </button>
+        <button id="installBtn" class="tool-btn primary-btn" hidden>
+          <span>Install App</span>
+        </button>
       </div>
+    </header>
 
-      <!-- Start / Pause / Game Over Overlay -->
-      <div class="overlay-screen" id="menuOverlay">
-        <div class="overlay-card">
-          <div class="game-badge" id="overlayBadge">3D ENDLESS CYBER RACER</div>
-          <h2 class="overlay-title" id="overlayTitle">NEON DRIFT 3D</h2>
-          <p class="overlay-desc" id="overlayDesc">
-            Dodge laser monoliths on a 3D synthwave grid, collect energy cores, and trigger Hyper-Nitro!
-          </p>
+    <!-- Main Viewport Stage -->
+    <main class="stage-wrap">
+      <div class="viewport-card">
+        <canvas id="raceCanvas" width="1280" height="720"></canvas>
 
-          <div class="stats-summary" id="statsSummary" hidden>
-            <div class="stat-box">
-              <span>RUN SCORE</span>
-              <strong id="finalScoreVal">0</strong>
+        <!-- Clean Motorsport Telemetry HUD -->
+        <div class="telemetry-top">
+          <div class="telemetry-group">
+            <div class="tel-box">
+              <span class="tel-label">SCORE</span>
+              <span id="hudScore" class="tel-value">0</span>
             </div>
-            <div class="stat-box">
-              <span>HIGH SCORE</span>
-              <strong id="finalBestVal">0</strong>
+            <div class="tel-box">
+              <span class="tel-label">DISTANCE</span>
+              <span id="hudDist" class="tel-value">0.0 <small>KM</small></span>
             </div>
-            <div class="stat-box">
-              <span>COINS EARNED</span>
-              <strong id="finalCoinsVal">+0 ⚡</strong>
+            <div class="tel-box">
+              <span class="tel-label">BEST RECORD</span>
+              <span id="hudBest" class="tel-value">0</span>
+            </div>
+            <div class="tel-box" id="timerBox" hidden>
+              <span class="tel-label">TIME LEFT</span>
+              <span id="hudTimer" class="tel-value accent-red">45.0s</span>
             </div>
           </div>
 
-          <div class="controls-guide" id="controlsGuide">
-            <div class="control-item"><kbd>←</kbd> <kbd>→</kbd> or <kbd>A</kbd> <kbd>D</kbd> / Swipe<span>Switch Lanes</span></div>
-            <div class="control-item"><kbd>SPACE</kbd> / <kbd>↑</kbd> / Tap<span>Jump Laser</span></div>
-            <div class="control-item"><kbd>SHIFT</kbd> / Boost Btn<span>Hyper Nitro</span></div>
+          <div class="telemetry-right">
+            <div id="comboBanner" class="combo-pill" hidden>
+              <span id="comboText">NEAR MISS x2</span>
+            </div>
+            <button id="pauseBtn" class="icon-btn" title="Pause Race (P or ESC)">II</button>
+          </div>
+        </div>
+
+        <!-- Bottom Instrument Cluster (Speedometer, Gear, RPM, Slipstream Boost) -->
+        <div class="instrument-cluster">
+          <div class="cluster-left">
+            <div class="car-badge">
+              <span class="car-badge-label">CHASSIS</span>
+              <strong id="hudCarName">APEX GT-R</strong>
+            </div>
+            <div class="boost-meter">
+              <div class="boost-header">
+                <span>SLIPSTREAM OVERDRIVE (SHIFT / SPACE)</span>
+                <span id="hudBoostPct">100%</span>
+              </div>
+              <div class="boost-track">
+                <div id="hudBoostFill" class="boost-fill" style="width: 100%"></div>
+              </div>
+            </div>
           </div>
 
-          <div class="overlay-buttons">
-            <button class="primary-play-btn" id="startGameBtn">
-              ▶ LAUNCH GAME
-            </button>
+          <div class="cluster-right">
+            <div class="gear-box">
+              <span class="gear-label">GEAR</span>
+              <span id="hudGear" class="gear-num">1</span>
+            </div>
+            <div class="speed-box">
+              <div class="rpm-bar">
+                <div id="hudRpmFill" class="rpm-fill" style="width: 18%"></div>
+              </div>
+              <div class="speed-readout">
+                <span id="hudSpeed" class="speed-digits">000</span>
+                <span class="speed-unit">KM/H</span>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <div class="QuickSwitchRow">
-            <span>Or switch cabinet:</span>
-            <button class="mini-switch" data-switch="drift">🏎️ Neon Drift</button>
-            <button class="mini-switch" data-switch="survivor">🚀 Void Survivor</button>
-            <button class="mini-switch" data-switch="stack">🧱 Cyber Stack</button>
+        <!-- Editorial Start / Pause / Finish Overlay -->
+        <div id="menuOverlay" class="overlay-screen">
+          <div class="editorial-modal">
+            <div class="modal-header-row">
+              <span id="modalKicker" class="editorial-kicker">01 // TWO-WAY HIGHWAY</span>
+              <span id="modalWeatherTag" class="weather-pill">☀️ ALPINE DAYLIGHT</span>
+            </div>
+
+            <h1 id="modalTitle" class="editorial-title">ASPHALT OVERDRIVE</h1>
+            <p id="modalDesc" class="editorial-desc">
+              Precision 3D highway racing. Thread through heavy traffic, use oncoming lanes for 2x velocity multipliers, and build near-miss slipstream combos.
+            </p>
+
+            <!-- Run Summary Metrics -->
+            <div class="metrics-grid">
+              <div class="metric-item">
+                <span class="metric-label">LAST RUN SCORE</span>
+                <strong id="statLastScore" class="metric-val">0</strong>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label">MODE RECORD</span>
+                <strong id="statBestScore" class="metric-val">0</strong>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label">TOP VELOCITY</span>
+                <strong id="statTopSpeed" class="metric-val">0 <small>KM/H</small></strong>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label">RACE CREDITS EARNED</span>
+                <strong id="statEarned" class="metric-val highlight-gold">+$0</strong>
+              </div>
+            </div>
+
+            <!-- Quick Car Selector Strip inside Main Modal -->
+            <div class="quick-car-bar">
+              <div class="quick-car-info">
+                <span class="quick-label">SELECTED VEHICLE</span>
+                <strong id="modalCarTitle">Apex GT-R (Guards Red)</strong>
+              </div>
+              <div class="quick-car-actions">
+                <button id="openGarageFromModal" class="secondary-btn">Garage &amp; Tuning →</button>
+              </div>
+            </div>
+
+            <!-- Controls Reference -->
+            <div class="controls-table">
+              <div class="ctrl-cell">
+                <kbd>A / D</kbd> or <kbd>← / →</kbd>
+                <span>Steer &amp; Change Lanes</span>
+              </div>
+              <div class="ctrl-cell">
+                <kbd>W / ↑</kbd> &amp; <kbd>S / ↓</kbd>
+                <span>Throttle &amp; Brembo Brake</span>
+              </div>
+              <div class="ctrl-cell">
+                <kbd>SPACE</kbd> or <kbd>SHIFT</kbd>
+                <span>Slipstream Overdrive Boost</span>
+              </div>
+              <div class="ctrl-cell">
+                <kbd>C</kbd>
+                <span>Cycle Weather Condition</span>
+              </div>
+            </div>
+
+            <div class="modal-cta-row">
+              <button id="startRaceBtn" class="start-race-btn">
+                <span>START ENGINE &amp; DRIVE</span>
+                <span class="cta-arrow">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Garage & Workshop Modal -->
+        <div id="garageModal" class="overlay-screen" hidden>
+          <div class="editorial-modal garage-dialog">
+            <div class="modal-header-row">
+              <span class="editorial-kicker">PADDOCK &amp; ENGINEERING</span>
+              <button id="closeGarageBtn" class="close-btn">✕ Close</button>
+            </div>
+            <h2 class="editorial-title">MOTORSPORT GARAGE</h2>
+            <p class="editorial-desc">Unlock flagship grand tourers and calibrate your drivetrain. All progress is stored locally for offline play.</p>
+
+            <!-- Car Roster -->
+            <div class="car-roster" id="carRoster">
+              <!-- Populated dynamically by game.js -->
+            </div>
+
+            <!-- Performance Tuning -->
+            <div class="tuning-section">
+              <h3 class="section-subhead">DRIVETRAIN &amp; CHASSIS TUNING</h3>
+              <div class="tuning-grid">
+                <div class="tune-card">
+                  <div class="tune-info">
+                    <strong>ECU &amp; Twin-Turbo Stage</strong>
+                    <small>Increases top speed &amp; gear acceleration</small>
+                    <span id="lvlEngine" class="tune-lvl">Stage 1 / 5</span>
+                  </div>
+                  <button id="buyEngine" class="tune-buy-btn">$250</button>
+                </div>
+
+                <div class="tune-card">
+                  <div class="tune-info">
+                    <strong>Carbon-Ceramic Brakes &amp; Grip</strong>
+                    <small>Sharper lane response &amp; emergency braking</small>
+                    <span id="lvlHandling" class="tune-lvl">Stage 1 / 5</span>
+                  </div>
+                  <button id="buyHandling" class="tune-buy-btn">$250</button>
+                </div>
+
+                <div class="tune-card">
+                  <div class="tune-info">
+                    <strong>Slipstream KERS Hybrid</strong>
+                    <small>Longer Overdrive boost &amp; faster recharge</small>
+                    <span id="lvlBoost" class="tune-lvl">Stage 1 / 5</span>
+                  </div>
+                  <button id="buyBoost" class="tune-buy-btn">$250</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Touch Controls -->
+        <div class="touch-controls" id="touchControls">
+          <div class="touch-left">
+            <button id="btnLeft" class="touch-pad" aria-label="Steer Left">◀</button>
+            <button id="btnRight" class="touch-pad" aria-label="Steer Right">▶</button>
+          </div>
+          <div class="touch-right">
+            <button id="btnBrake" class="touch-pad brake-pad" aria-label="Brake">BRAKE</button>
+            <button id="btnBoost" class="touch-pad boost-pad" aria-label="Overdrive Boost">BOOST</button>
           </div>
         </div>
       </div>
+    </main>
 
-      <!-- Level-Up Upgrade Modal (For Void Survivor) -->
-      <div class="overlay-screen" id="upgradeOverlay" hidden>
-        <div class="overlay-card upgrade-card">
-          <div class="game-badge">⚡ LEVEL UP! CHOOSE MODULE</div>
-          <h2 class="overlay-title">UPGRADE SHIP WEAPONRY</h2>
-          <div class="upgrade-grid" id="upgradeOptions"></div>
-        </div>
+    <!-- Editorial Footer -->
+    <footer class="bottombar">
+      <div class="footer-left">
+        <span>Engineered by <a href="https://kabeer.site/">Kabeer Ahmed</a></span>
+        <span class="sep">·</span>
+        <a href="https://github.com/Kabeer099/kabeer-arcade" target="_blank" rel="noopener">GitHub Source</a>
+        <span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/kabeerahmed-dev" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-
-      <!-- Mobile On-Screen Controls -->
-      <div class="mobile-controls" id="mobileControls">
-        <!-- Drift Controls -->
-        <div class="touch-group drift-touch" id="touchDrift">
-          <div class="touch-left-right">
-            <button class="touch-btn" id="btnLeft" aria-label="Move Left">◀</button>
-            <button class="touch-btn" id="btnRight" aria-label="Move Right">▶</button>
-          </div>
-          <div class="touch-actions">
-            <button class="touch-btn accent" id="btnNitro" aria-label="Nitro Boost">🔥 NITRO</button>
-            <button class="touch-btn primary" id="btnJump" aria-label="Jump">▲ JUMP</button>
-          </div>
-        </div>
-
-        <!-- Survivor Controls -->
-        <div class="touch-group survivor-touch" id="touchSurvivor" hidden>
-          <div class="touch-hint">👆 Drag anywhere on screen to pilot ship &amp; auto-fire</div>
-          <button class="touch-btn accent" id="btnNova" aria-label="EMP Nova Bomb">💥 NOVA PULSE (<span id="novaCount">2</span>)</button>
-        </div>
-
-        <!-- Stack Controls -->
-        <div class="touch-group stack-touch" id="touchStack" hidden>
-          <button class="touch-btn giant-tap" id="btnPlaceBlock">⚡ TAP TO DROP SLAB ⚡</button>
-        </div>
+      <div class="footer-right">
+        <span>100% Offline Service Worker Active — Disconnect Wi-Fi anytime and keep racing.</span>
       </div>
-    </div>
-  </main>
-
-  <!-- Footer Info -->
-  <footer class="arcade-footer">
-    <div>
-      Crafted by <a href="https://kabeer.site/" target="_blank" rel="noopener">Kabeer Ahmed</a> &bull;
-      <a href="https://github.com/kabeer099" target="_blank" rel="noopener">GitHub</a> &bull;
-      <a href="https://www.linkedin.com/in/kabeerahmed-dev" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-    <div class="offline-hint">
-      💾 Auto-saved locally &bull; Turn off Wi-Fi anytime and keep playing!
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <script src="./game.js"></script>
 </body>
