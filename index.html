@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Kabeer Arcade — 3-in-1 Offline Cyber Gaming Hub | Kabeer Ahmed</title>
+  <meta name="description" content="Play 3D Neon Drift, Void Survivor & Cyber Stack 3D in your browser — 100% Offline Ready PWA built by Kabeer Ahmed." />
+  <meta name="theme-color" content="#06060e" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body data-theme="cyan">
+  <!-- Background Ambient Grid -->
+  <div class="bg-grid"></div>
+
+  <!-- Top Arcade Header -->
+  <header class="arcade-header">
+    <div class="brand-group">
+      <a href="https://kabeer.site/" class="brand-logo" title="Back to Kabeer Ahmed Portfolio">
+        <span class="logo-badge">K✦A</span>
+        <div class="brand-text">
+          <h1>KABEER ARCADE</h1>
+          <span class="brand-sub">3-IN-1 OFFLINE ENGINE</span>
+        </div>
+      </a>
+      <div class="status-pill" id="offlineStatusPill" title="Once loaded, this game works 100% without internet!">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">OFFLINE READY</span>
+      </div>
+    </div>
+
+    <!-- Game Mode Switcher Tabs -->
+    <nav class="game-tabs" aria-label="Select Game">
+      <button class="game-tab active" data-game="drift" id="tab-drift">
+        <span class="tab-icon">🏎️</span>
+        <div class="tab-info">
+          <span class="tab-title">NEON DRIFT 3D</span>
+          <span class="tab-tag">3D Cyber Highway</span>
+        </div>
+      </button>
+      <button class="game-tab" data-game="survivor" id="tab-survivor">
+        <span class="tab-icon">🚀</span>
+        <div class="tab-info">
+          <span class="tab-title">VOID SURVIVOR</span>
+          <span class="tab-tag">2D Space Roguelite</span>
+        </div>
+      </button>
+      <button class="game-tab" data-game="stack" id="tab-stack">
+        <span class="tab-icon">🧱</span>
+        <div class="tab-info">
+          <span class="tab-title">CYBER STACK 3D</span>
+          <span class="tab-tag">3D Precision Tower</span>
+        </div>
+      </button>
+    </nav>
+
+    <!-- Right Controls: Coins, Themes, Audio, Install -->
+    <div class="header-actions">
+      <div class="coin-wallet" title="Cyber Coins (Earned across all 3 games & saved offline)">
+        <span class="coin-icon">⚡</span>
+        <span id="totalCoinsDisplay">0</span>
+      </div>
+
+      <button class="icon-btn" id="themeBtn" title="Switch Neon Theme">
+        🎨 <span class="btn-label" id="themeLabel">Cyan</span>
+      </button>
+
+      <button class="icon-btn active" id="sfxBtn" title="Toggle Sound Effects">
+        🔊 <span class="btn-label">SFX</span>
+      </button>
+
+      <button class="icon-btn" id="musicBtn" title="Toggle Synthwave Beats">
+        🎵 <span class="btn-label">BEAT</span>
+      </button>
+
+      <button class="install-btn" id="installPwaBtn" hidden>
+        📲 Install Offline
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Arcade Viewport -->
+  <main class="arcade-stage">
+    <div class="canvas-wrapper" id="canvasWrapper">
+      <canvas id="gameCanvas"></canvas>
+
+      <!-- Live In-Game HUD -->
+      <div class="hud-bar" id="hudBar">
+        <div class="hud-stat">
+          <span class="hud-label">SCORE</span>
+          <span class="hud-val" id="hudScore">0</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">BEST</span>
+          <span class="hud-val highlight" id="hudBest">0</span>
+        </div>
+        <div class="hud-stat" id="hudExtraWrap">
+          <span class="hud-label" id="hudExtraLabel">SPEED</span>
+          <span class="hud-val" id="hudExtraVal">1.0x</span>
+        </div>
+        <button class="hud-pause-btn" id="pauseBtn" title="Pause Game (P / Esc)">⏸</button>
+      </div>
+
+      <!-- Start / Pause / Game Over Overlay -->
+      <div class="overlay-screen" id="menuOverlay">
+        <div class="overlay-card">
+          <div class="game-badge" id="overlayBadge">3D ENDLESS CYBER RACER</div>
+          <h2 class="overlay-title" id="overlayTitle">NEON DRIFT 3D</h2>
+          <p class="overlay-desc" id="overlayDesc">
+            Dodge laser monoliths on a 3D synthwave grid, collect energy cores, and trigger Hyper-Nitro!
+          </p>
+
+          <div class="stats-summary" id="statsSummary" hidden>
+            <div class="stat-box">
+              <span>RUN SCORE</span>
+              <strong id="finalScoreVal">0</strong>
+            </div>
+            <div class="stat-box">
+              <span>HIGH SCORE</span>
+              <strong id="finalBestVal">0</strong>
+            </div>
+            <div class="stat-box">
+              <span>COINS EARNED</span>
+              <strong id="finalCoinsVal">+0 ⚡</strong>
+            </div>
+          </div>
+
+          <div class="controls-guide" id="controlsGuide">
+            <div class="control-item"><kbd>←</kbd> <kbd>→</kbd> or <kbd>A</kbd> <kbd>D</kbd> / Swipe<span>Switch Lanes</span></div>
+            <div class="control-item"><kbd>SPACE</kbd> / <kbd>↑</kbd> / Tap<span>Jump Laser</span></div>
+            <div class="control-item"><kbd>SHIFT</kbd> / Boost Btn<span>Hyper Nitro</span></div>
+          </div>
+
+          <div class="overlay-buttons">
+            <button class="primary-play-btn" id="startGameBtn">
+              ▶ LAUNCH GAME
+            </button>
+          </div>
+
+          <div class="QuickSwitchRow">
+            <span>Or switch cabinet:</span>
+            <button class="mini-switch" data-switch="drift">🏎️ Neon Drift</button>
+            <button class="mini-switch" data-switch="survivor">🚀 Void Survivor</button>
+            <button class="mini-switch" data-switch="stack">🧱 Cyber Stack</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Level-Up Upgrade Modal (For Void Survivor) -->
+      <div class="overlay-screen" id="upgradeOverlay" hidden>
+        <div class="overlay-card upgrade-card">
+          <div class="game-badge">⚡ LEVEL UP! CHOOSE MODULE</div>
+          <h2 class="overlay-title">UPGRADE SHIP WEAPONRY</h2>
+          <div class="upgrade-grid" id="upgradeOptions"></div>
+        </div>
+      </div>
+
+      <!-- Mobile On-Screen Controls -->
+      <div class="mobile-controls" id="mobileControls">
+        <!-- Drift Controls -->
+        <div class="touch-group drift-touch" id="touchDrift">
+          <div class="touch-left-right">
+            <button class="touch-btn" id="btnLeft" aria-label="Move Left">◀</button>
+            <button class="touch-btn" id="btnRight" aria-label="Move Right">▶</button>
+          </div>
+          <div class="touch-actions">
+            <button class="touch-btn accent" id="btnNitro" aria-label="Nitro Boost">🔥 NITRO</button>
+            <button class="touch-btn primary" id="btnJump" aria-label="Jump">▲ JUMP</button>
+          </div>
+        </div>
+
+        <!-- Survivor Controls -->
+        <div class="touch-group survivor-touch" id="touchSurvivor" hidden>
+          <div class="touch-hint">👆 Drag anywhere on screen to pilot ship &amp; auto-fire</div>
+          <button class="touch-btn accent" id="btnNova" aria-label="EMP Nova Bomb">💥 NOVA PULSE (<span id="novaCount">2</span>)</button>
+        </div>
+
+        <!-- Stack Controls -->
+        <div class="touch-group stack-touch" id="touchStack" hidden>
+          <button class="touch-btn giant-tap" id="btnPlaceBlock">⚡ TAP TO DROP SLAB ⚡</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Info -->
+  <footer class="arcade-footer">
+    <div>
+      Crafted by <a href="https://kabeer.site/" target="_blank" rel="noopener">Kabeer Ahmed</a> &bull;
+      <a href="https://github.com/kabeer099" target="_blank" rel="noopener">GitHub</a> &bull;
+      <a href="https://www.linkedin.com/in/kabeerahmed-dev" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="offline-hint">
+      💾 Auto-saved locally &bull; Turn off Wi-Fi anytime and keep playing!
+    </div>
+  </footer>
+
+  <script src="./game.js"></script>
+</body>
+</html>
