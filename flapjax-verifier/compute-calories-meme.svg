@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560" width="980" height="560">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#171b24"/>
+    </linearGradient>
+    <linearGradient id="syrupGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+  </defs>
+  <rect width="980" height="560" fill="url(#bgGrad)"/>
+
+  <!-- Header Banner -->
+  <text x="490" y="42" fill="#f59e0b" font-family="monospace" font-size="22" font-weight="bold" text-anchor="middle">🥞 COMPUTE IS CALORIES: SYBIL VAPOR vs. ON-CHAIN GRIDDLE RECEIPTS</text>
+  <text x="490" y="66" fill="#94a3b8" font-family="monospace" font-size="13" text-anchor="middle">Why one eth_call at a pinned BSC block outweighs a thousand unverified claims · @kabeer-forge</text>
+
+  <!-- Left Card: Sybil Vapor (0 Calories) -->
+  <rect x="30" y="88" width="440" height="440" rx="12" fill="#161b22" stroke="#ef4444" stroke-width="2" stroke-dasharray="8,5"/>
+  <text x="250" y="124" fill="#f87171" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle">EMPTY CALORIES (NARRATIVE VAPOR)</text>
+  <text x="250" y="148" fill="#94a3b8" font-family="monospace" font-size="12" text-anchor="middle">"Done! Checked the pool! Trust my screenshot!"</text>
+
+  <!-- Hollow Ghost Plate -->
+  <ellipse cx="250" cy="260" rx="145" ry="42" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="250" y="245" fill="#fca5a5" font-family="monospace" font-size="13" text-anchor="middle">blockNumber: undefined</text>
+  <text x="250" y="268" fill="#fca5a5" font-family="monospace" font-size="13" text-anchor="middle">setMode(0xd72dd3b4): "unmeasured"</text>
+  <text x="250" y="291" fill="#fca5a5" font-family="monospace" font-size="13" text-anchor="middle">Number(wei) -&gt; 53-bit float drift</text>
+
+  <!-- Failed Verifier Box -->
+  <rect x="60" y="340" width="380" height="155" rx="8" fill="#0d1117" stroke="#7f1d1d" stroke-width="1.5"/>
+  <text x="80" y="368" fill="#ef4444" font-family="monospace" font-size="12" font-weight="bold">$ node verify-flapjax.mjs --tx 0xdead...beef</text>
+  <text x="80" y="394" fill="#fca5a5" font-family="monospace" font-size="12">validPayout : false</text>
+  <text x="80" y="416" fill="#fca5a5" font-family="monospace" font-size="12">reason      : Sender != FlapJax Treasury</text>
+  <text x="80" y="438" fill="#fca5a5" font-family="monospace" font-size="12">calories    : 0 (burns reviewer time)</text>
+  <text x="250" y="476" fill="#ef4444" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">REJECTED AT THE GRIDDLE</text>
+
+  <!-- Right Card: Verified Griddle Stack (Real Calories) -->
+  <rect x="510" y="88" width="440" height="440" rx="12" fill="#161b22" stroke="#10b981" stroke-width="2.5"/>
+  <text x="730" y="124" fill="#34d399" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle">REAL CALORIES (PINNED RPC RECEIPTS)</text>
+  <text x="730" y="148" fill="#fde68a" font-family="monospace" font-size="12" text-anchor="middle">18-dec BigInt · Bytecode Opcodes · V3 Tick Proof</text>
+
+  <!-- 3 Stacked Golden Flapjacks -->
+  <ellipse cx="730" cy="292" rx="155" ry="26" fill="url(#syrupGrad)" stroke="#fef3c7" stroke-width="2"/>
+  <text x="730" y="297" fill="#0d1117" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">NFT #1456181 [-887200,887200] = 100% Active Liq</text>
+
+  <ellipse cx="730" cy="242" rx="155" ry="26" fill="url(#syrupGrad)" stroke="#fef3c7" stroke-width="2"/>
+  <text x="730" y="247" fill="#0d1117" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">0x041f: SLOAD(0x06) ISZERO JUMPI(0x042d)</text>
+
+  <ellipse cx="730" cy="192" rx="155" ry="26" fill="url(#syrupGrad)" stroke="#fef3c7" stroke-width="2"/>
+  <text x="730" y="197" fill="#0d1117" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">Tx 0xe588d112...0963 · 100,000 FJ Settled</text>
+
+  <!-- Butter Pat on Top -->
+  <rect x="705" y="164" width="50" height="16" rx="3" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+
+  <!-- Passed Verifier Box -->
+  <rect x="540" y="340" width="380" height="155" rx="8" fill="#0d1117" stroke="#065f46" stroke-width="1.5"/>
+  <text x="560" y="368" fill="#34d399" font-family="monospace" font-size="12" font-weight="bold">$ node verify-flapjax.mjs --test</text>
+  <text x="560" y="394" fill="#a7f3d0" font-family="monospace" font-size="12">[TEST 1] Payout 0xe588d1... == Wallet : PASS</text>
+  <text x="560" y="416" fill="#a7f3d0" font-family="monospace" font-size="12">[TEST 2] Mismatched Claim Wallet      : PASS</text>
+  <text x="560" y="438" fill="#a7f3d0" font-family="monospace" font-size="12">[TEST 3] Non-Treasury Swap 0x0db510... : PASS</text>
+  <text x="730" y="476" fill="#10b981" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">RECEIPTS OVER ROCKETS · 3/3 VERIFIED</text>
+</svg>
