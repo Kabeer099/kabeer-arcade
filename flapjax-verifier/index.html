@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlapJax On-Chain Verifier & Bytecode Inspector (BSC)</title>
+  <title>FlapJax Payout Receipt & On-Chain Verifier (BSC)</title>
   <style>
     :root {
       --bg: #0b0e14;
@@ -11,6 +11,7 @@
       --border: #232c3d;
       --accent: #f59e0b;
       --green: #10b981;
+      --red: #ef4444;
       --text: #e2e8f0;
       --muted: #94a3b8;
       --mono: 'ui-monospace', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
@@ -48,6 +49,22 @@
       font-size: 0.92rem;
     }
     button:hover { opacity: 0.92; }
+    input {
+      background: #07090d;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      width: 100%;
+    }
+    .tx-row {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr auto;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -59,6 +76,7 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 16px;
+      margin-bottom: 16px;
     }
     .card h2 {
       margin: 0 0 12px 0;
@@ -95,6 +113,7 @@
       font-size: 0.82rem;
       overflow-x: auto;
       color: #cbd5e1;
+      margin: 0;
     }
   </style>
 </head>
@@ -102,14 +121,26 @@
   <div class="container">
     <header>
       <div>
-        <h1>🥞 FlapJax On-Chain Verifier & Bytecode Inspector</h1>
-        <div class="sub">Zero-dependency live BSC RPC verifier for <code>0x90c8889f428F9Ebb77BB8f15CAD3a50a9aC680df</code>, V3 Pools & NFPM LP Positions</div>
+        <h1>🥞 FlapJax Payout Receipt & On-Chain Verifier</h1>
+        <div class="sub">Zero-dependency BSC Treasury Payout Receipt Checker + Token/Pool/NFPM Invariant Inspector</div>
       </div>
       <div>
         <button id="refreshBtn" onclick="runAudit()">Verify Live BSC Block</button>
       </div>
     </header>
 
+    <!-- Mode A: Free Payout Transaction Receipt Checker (Strictly Separated) -->
+    <div class="card">
+      <h2>Mode A — Free Treasury Payout Tx Receipt Checker (with Claimed Wallet Match)</h2>
+      <div class="tx-row">
+        <input id="txInput" placeholder="Enter BSC Tx Hash (0x...)" value="0xe588d112d726b0c75acae3305138670c12d5f12e45db2afcb07d3941cfb30963" />
+        <input id="walletInput" placeholder="Optional Claimed Wallet (0x...)" value="0xAC958F0925a31a2C3844179Ab62F12d480BaA76D" />
+        <button onclick="checkTxUI()">Verify Payout Tx</button>
+      </div>
+      <pre id="txResultBox">Click "Verify Payout Tx" to check receipt status, FLAPJAX Transfer logs, Treasury sender (0x7C34...359f), and recipient == claimedWallet.</pre>
+    </div>
+
+    <!-- Mode B: Full Token, Bytecode & Pool State Audit -->
     <div class="grid">
       <div class="card">
         <h2>1. Token & Storage Invariants</h2>
@@ -153,6 +184,7 @@
       NFPM: '0x46A15B0b27311cedF172AB29E4f4766fbE7F4364',
       LOCKER: '0x25c9c4b56e820e0dea438b145284f02d9ca9bd52'
     };
+    const TRANSFER_TOPIC = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
 
     async function rpc(method, params) {
       for (const url of RPCS) {
@@ -174,13 +206,72 @@
     function fmtUnits(rawBig, decimals = 18) {
       const s = rawBig.toString().padStart(decimals + 1, '0');
       const i = s.slice(0, s.length - decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      const f = s.slice(s.length - decimals, s.length - decimals + 4);
+      const f = s.slice(s.length - decimals, s.length - decimals + 6);
       return `${i}.${f}`;
     }
     function parseInt24(wordHex) {
       let v = BigInt('0x' + wordHex) & 0xffffffn;
       if (v >= 0x800000n) v -= 0x1000000n;
       return Number(v);
+    }
+
+    async function checkTxUI() {
+      const box = document.getElementById('txResultBox');
+      const txHash = document.getElementById('txInput').value.trim();
+      const claimedWallet = document.getElementById('walletInput').value.trim();
+      box.textContent = 'Querying eth_getTransactionReceipt on BSC...';
+      try {
+        const receipt = await rpc('eth_getTransactionReceipt', [txHash]);
+        if (!receipt) {
+          box.textContent = JSON.stringify({ validPayout: false, reason: 'Receipt not found', txHash }, null, 2);
+          return;
+        }
+        const flapLogs = (receipt.logs || []).filter(
+          l => l.address?.toLowerCase() === ADDR.FLAPJAX.toLowerCase() &&
+               l.topics?.[0]?.toLowerCase() === TRANSFER_TOPIC &&
+               l.topics?.length >= 3
+        );
+        if (!flapLogs.length) {
+          box.textContent = JSON.stringify({ validPayout: false, reason: 'No FLAPJAX Transfer log in tx', txHash, status: receipt.status }, null, 2);
+          return;
+        }
+        const transfers = flapLogs.map(l => ({
+          from: '0x' + l.topics[1].slice(26).toLowerCase(),
+          to: '0x' + l.topics[2].slice(26).toLowerCase(),
+          amountWei: BigInt(l.data).toString(),
+          amountFLAPJAX: fmtUnits(BigInt(l.data), 18)
+        }));
+        const fromTreas = transfers.find(t => t.from === ADDR.TREASURY.toLowerCase());
+        if (!fromTreas) {
+          box.textContent = JSON.stringify({
+            validPayout: false,
+            reason: `Transfer sender (${transfers[0].from}) is NOT FlapJax Treasury (${ADDR.TREASURY.toLowerCase()})`,
+            txHash,
+            blockNumber: Number(BigInt(receipt.blockNumber)),
+            transfers
+          }, null, 2);
+          return;
+        }
+        const walletOk = claimedWallet ? fromTreas.to === claimedWallet.toLowerCase() : true;
+        box.textContent = JSON.stringify({
+          validPayout: receipt.status === '0x1' && walletOk,
+          reason: !walletOk
+            ? `Recipient (${fromTreas.to}) does NOT match claimedWallet (${claimedWallet.toLowerCase()})`
+            : 'VERIFIED_TREASURY_PAYOUT',
+          txHash,
+          blockNumber: Number(BigInt(receipt.blockNumber)),
+          status: receipt.status,
+          tokenContract: ADDR.FLAPJAX,
+          sender: fromTreas.from,
+          recipient: fromTreas.to,
+          claimedWallet: claimedWallet ? claimedWallet.toLowerCase() : null,
+          walletMatched: claimedWallet ? walletOk : null,
+          amountFLAPJAX: fromTreas.amountFLAPJAX,
+          amountWei: fromTreas.amountWei
+        }, null, 2);
+      } catch (e) {
+        box.textContent = 'Error: ' + e.message;
+      }
     }
 
     async function runAudit() {
@@ -276,6 +367,7 @@ BYTECODE_INVARIANT: setMode(0xd72dd3b4 -> 0x0417) calls _checkOwner(0x0818, SLOA
         btn.textContent = 'Verify Live BSC Block';
       }
     }
+    checkTxUI();
     runAudit();
   </script>
 </body>
