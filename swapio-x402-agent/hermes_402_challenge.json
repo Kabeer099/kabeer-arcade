@@ -1,0 +1,52 @@
+{
+  "status": 402,
+  "headers": {
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "a5673805b8d7ff23-KHI",
+    "connection": "keep-alive",
+    "content-length": "906",
+    "content-type": "application/json",
+    "date": "Fri, 06 Nov 2026 21:33:50 GMT",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=xyef8t53CosyKsrJ8AnimNnB8XGyyXW9cXs%2Bx%2BTwKg%2F4MBFNTnJHsrXkiSJpsf76aBAdPvwzgpOxj3qa%2BiM4zB9AObbEMrM6GZusEyRLxA1Dpd7W2EHoTAqo89IKLFj%2B\"}]}",
+    "server": "cloudflare",
+    "set-cookie": "__cflb=04dToe2b8QLpxjuanoLqWGKTiSZeSSEGteLNNcE7vj; HttpOnly; SameSite=None; Secure; Path=/; Expires=Fri, 06 Nov 2026 22:33:50 GMT",
+    "strict-transport-security": "max-age=15552000",
+    "via": "1.1 Caddy",
+    "x-content-type-options": "nosniff"
+  },
+  "body": {
+    "x402Version": 1,
+    "accepts": [
+      {
+        "scheme": "exact",
+        "network": "solana",
+        "maxAmountRequired": "3007",
+        "resource": "https://hermes.swap.io/v1/swap/quote",
+        "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+        "mimeType": "application/json",
+        "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+        "maxTimeoutSeconds": 60,
+        "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "extra": {
+          "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+        }
+      },
+      {
+        "scheme": "exact",
+        "network": "base",
+        "maxAmountRequired": "3007",
+        "resource": "https://hermes.swap.io/v1/swap/quote",
+        "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+        "mimeType": "application/json",
+        "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+        "maxTimeoutSeconds": 60,
+        "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "extra": {
+          "name": "USD Coin",
+          "version": "2"
+        }
+      }
+    ]
+  }
+}
