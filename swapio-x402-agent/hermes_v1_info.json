@@ -1,0 +1,441 @@
+{
+  "description": "Paid swap API for users and AI agents, monetized per request via x402. Proxies the routhex routing engine.",
+  "docs": "https://hermes.swap.io/llms.txt",
+  "endpoints": [
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "3000",
+          "resource": "https://hermes.swap.io/v1/swap/quote",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "3000",
+          "resource": "https://hermes.swap.io/v1/swap/quote",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "3000",
+      "method": "POST",
+      "operation": "quote",
+      "path": "/v1/swap/quote",
+      "payment": "x402"
+    },
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "3259",
+          "resource": "https://hermes.swap.io/v1/swap/quote-2.0",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "3259",
+          "resource": "https://hermes.swap.io/v1/swap/quote-2.0",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "3259",
+      "method": "POST",
+      "operation": "quote-2.0",
+      "path": "/v1/swap/quote-2.0",
+      "payment": "x402"
+    },
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "3000",
+          "resource": "https://hermes.swap.io/v1/swap/build-tx",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "3000",
+          "resource": "https://hermes.swap.io/v1/swap/build-tx",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "3000",
+      "method": "POST",
+      "operation": "build-tx",
+      "path": "/v1/swap/build-tx",
+      "payment": "x402"
+    },
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "3019",
+          "resource": "https://hermes.swap.io/v1/swap/submit-tx",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "3019",
+          "resource": "https://hermes.swap.io/v1/swap/submit-tx",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "3019",
+      "method": "POST",
+      "operation": "submit-tx",
+      "path": "/v1/swap/submit-tx",
+      "payment": "x402"
+    },
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "3298",
+          "resource": "https://hermes.swap.io/v1/transfer/build-tx",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "3298",
+          "resource": "https://hermes.swap.io/v1/transfer/build-tx",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "3298",
+      "method": "POST",
+      "operation": "transfer-build-tx",
+      "path": "/v1/transfer/build-tx",
+      "payment": "x402"
+    },
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "3000",
+          "resource": "https://hermes.swap.io/v1/swap/status",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "3000",
+          "resource": "https://hermes.swap.io/v1/swap/status",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "3000",
+      "method": "GET",
+      "operation": "status",
+      "path": "/v1/swap/status",
+      "payment": "x402"
+    },
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "4877",
+          "resource": "https://hermes.swap.io/v1/orders/limit/create",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "4877",
+          "resource": "https://hermes.swap.io/v1/orders/limit/create",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "4877",
+      "method": "POST",
+      "operation": "order-limit-create",
+      "path": "/v1/orders/limit/create",
+      "payment": "x402"
+    },
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "4858",
+          "resource": "https://hermes.swap.io/v1/orders/dca/create",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "4858",
+          "resource": "https://hermes.swap.io/v1/orders/dca/create",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "4858",
+      "method": "POST",
+      "operation": "order-dca-create",
+      "path": "/v1/orders/dca/create",
+      "payment": "x402"
+    },
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "3019",
+          "resource": "https://hermes.swap.io/v1/orders/cancel",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "3019",
+          "resource": "https://hermes.swap.io/v1/orders/cancel",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "3019",
+      "method": "POST",
+      "operation": "order-cancel",
+      "path": "/v1/orders/cancel",
+      "payment": "x402"
+    },
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "3000",
+          "resource": "https://hermes.swap.io/v1/orders",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "3000",
+          "resource": "https://hermes.swap.io/v1/orders",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "3000",
+      "method": "GET",
+      "operation": "order-list",
+      "path": "/v1/orders",
+      "payment": "x402"
+    },
+    {
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "solana",
+          "maxAmountRequired": "3000",
+          "resource": "https://hermes.swap.io/v1/orders/{order}",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "BPz2u6eoWLervxEqfpsMCVmKk7h6fEVsd7L5rvEibMfD",
+          "maxTimeoutSeconds": 60,
+          "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "extra": {
+            "feePayer": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "base",
+          "maxAmountRequired": "3000",
+          "resource": "https://hermes.swap.io/v1/orders/{order}",
+          "description": "Paid swap API (routhex): quote and build unsigned transactions; caller signs and broadcasts",
+          "mimeType": "application/json",
+          "payTo": "0xC22f661733B85C1349F7C83EE0B2BCF3234603dE",
+          "maxTimeoutSeconds": 60,
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "asset": "USDC",
+      "basePrice": "3000",
+      "method": "GET",
+      "operation": "order-get",
+      "path": "/v1/orders/{order}",
+      "payment": "x402"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/info",
+      "payment": "none"
+    }
+  ],
+  "service": "swap-io-hermes"
+}
