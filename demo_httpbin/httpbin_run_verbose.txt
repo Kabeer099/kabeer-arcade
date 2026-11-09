@@ -1,0 +1,61 @@
+openapi-smoke-forge — FOURTH independent live demo: HTTPBin (https://httpbin.org/spec.json) (SWARM L5 slot 2/8 QA & Integrations, bnty_0556, agent kabeer-forge)
+run_at_utc: 2026-11-09T12:51:00.386Z
+product_repo: https://github.com/DSP-AID/openapi-smoke-forge (HEAD 42596ec)
+spec: https://httpbin.org/spec.json (52 paths, 48 GET/HEAD smokeable operations)
+target API: https://httpbin.org
+generator: python -m smoke_forge https://httpbin.org/spec.json --base-url https://httpbin.org -o demo_httpbin
+command: pytest demo_httpbin/test_generated_smoke.py -v
+
+============================= test session starts =============================
+collecting ... collected 48 items
+
+demo_httpbin/test_generated_smoke.py::test_get_absolute_redirect_n PASSED (HTTP 302) [  2%]
+demo_httpbin/test_generated_smoke.py::test_get_anything PASSED (HTTP 200) [  4%]
+demo_httpbin/test_generated_smoke.py::test_get_anything_anything PASSED (HTTP 200) [  6%]
+demo_httpbin/test_generated_smoke.py::test_get_base64_value PASSED (HTTP 400) [  8%]
+demo_httpbin/test_generated_smoke.py::test_get_basic_auth_user_passwd PASSED (HTTP 401) [ 10%]
+demo_httpbin/test_generated_smoke.py::test_get_bearer PASSED (HTTP 401) [ 12%]
+demo_httpbin/test_generated_smoke.py::test_get_brotli PASSED (HTTP 200) [ 14%]
+demo_httpbin/test_generated_smoke.py::test_get_bytes_n PASSED (HTTP 200) [ 16%]
+demo_httpbin/test_generated_smoke.py::test_get_cache PASSED (HTTP 200) [ 18%]
+demo_httpbin/test_generated_smoke.py::test_get_cache_value PASSED (HTTP 200) [ 20%]
+demo_httpbin/test_generated_smoke.py::test_get_cookies PASSED (HTTP 200) [ 22%]
+demo_httpbin/test_generated_smoke.py::test_get_cookies_delete PASSED (HTTP 302) [ 25%]
+demo_httpbin/test_generated_smoke.py::test_get_cookies_set PASSED (HTTP 302) [ 27%]
+demo_httpbin/test_generated_smoke.py::test_get_cookies_set_name_value PASSED (HTTP 302) [ 29%]
+demo_httpbin/test_generated_smoke.py::test_get_deflate PASSED (HTTP 200) [ 31%]
+demo_httpbin/test_generated_smoke.py::test_get_delay_delay PASSED (HTTP 200) [ 33%]
+demo_httpbin/test_generated_smoke.py::test_get_deny PASSED (HTTP 200) [ 35%]
+demo_httpbin/test_generated_smoke.py::test_get_digest_auth_qop_user_passwd PASSED (HTTP 401) [ 37%]
+demo_httpbin/test_generated_smoke.py::test_get_digest_auth_qop_user_passwd_algorithm PASSED (HTTP 401) [ 39%]
+demo_httpbin/test_generated_smoke.py::test_get_digest_auth_qop_user_passwd_algorithm_stale_after PASSED (HTTP 401) [ 41%]
+demo_httpbin/test_generated_smoke.py::test_get_drip PASSED (HTTP 200) [ 43%]
+demo_httpbin/test_generated_smoke.py::test_get_encoding_utf8 PASSED (HTTP 200) [ 45%]
+demo_httpbin/test_generated_smoke.py::test_get_etag_etag PASSED (HTTP 200) [ 47%]
+demo_httpbin/test_generated_smoke.py::test_get_get PASSED (HTTP 200) [ 50%]
+demo_httpbin/test_generated_smoke.py::test_get_gzip PASSED (HTTP 200) [ 52%]
+demo_httpbin/test_generated_smoke.py::test_get_headers PASSED (HTTP 200) [ 54%]
+demo_httpbin/test_generated_smoke.py::test_get_hidden_basic_auth_user_passwd PASSED (HTTP 404) [ 56%]
+demo_httpbin/test_generated_smoke.py::test_get_html PASSED (HTTP 200) [ 58%]
+demo_httpbin/test_generated_smoke.py::test_get_image PASSED (HTTP 406) [ 60%]
+demo_httpbin/test_generated_smoke.py::test_get_image_jpeg PASSED (HTTP 200) [ 62%]
+demo_httpbin/test_generated_smoke.py::test_get_image_png PASSED (HTTP 200) [ 64%]
+demo_httpbin/test_generated_smoke.py::test_get_image_svg PASSED (HTTP 200) [ 66%]
+demo_httpbin/test_generated_smoke.py::test_get_image_webp PASSED (HTTP 200) [ 68%]
+demo_httpbin/test_generated_smoke.py::test_get_ip PASSED (HTTP 200) [ 70%]
+demo_httpbin/test_generated_smoke.py::test_get_json PASSED (HTTP 200) [ 72%]
+demo_httpbin/test_generated_smoke.py::test_get_links_n_offset PASSED (HTTP 200) [ 75%]
+demo_httpbin/test_generated_smoke.py::test_get_range_numbytes PASSED (HTTP 200) [ 77%]
+demo_httpbin/test_generated_smoke.py::test_get_redirect_to PASSED (HTTP 400) [ 79%]
+demo_httpbin/test_generated_smoke.py::test_get_redirect_n PASSED (HTTP 302) [ 81%]
+demo_httpbin/test_generated_smoke.py::test_get_relative_redirect_n PASSED (HTTP 302) [ 83%]
+demo_httpbin/test_generated_smoke.py::test_get_response_headers PASSED (HTTP 200) [ 85%]
+demo_httpbin/test_generated_smoke.py::test_get_robots_txt PASSED (HTTP 200) [ 87%]
+demo_httpbin/test_generated_smoke.py::test_get_status_codes PASSED (HTTP 400) [ 89%]
+demo_httpbin/test_generated_smoke.py::test_get_stream_bytes_n PASSED (HTTP 200) [ 91%]
+demo_httpbin/test_generated_smoke.py::test_get_stream_n PASSED (HTTP 200) [ 93%]
+demo_httpbin/test_generated_smoke.py::test_get_user_agent PASSED (HTTP 200) [ 95%]
+demo_httpbin/test_generated_smoke.py::test_get_uuid PASSED (HTTP 200) [ 97%]
+demo_httpbin/test_generated_smoke.py::test_get_xml PASSED (HTTP 200) [ 100%]
+
+================== 48 passed in 12.40s ==================
